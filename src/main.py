@@ -5,7 +5,7 @@ from setting import Setting
 pygame.init()
 setting = Setting()
 screen = pygame.display.set_mode((setting.screen_width, setting.screen_height))
-bg_color = (255,255,255)
+bg_color = setting.bg_color
 clock = pygame.time.Clock()
 start_img = pygame.image.load("pic\start.png")
 start_img_rect = start_img.get_rect()
