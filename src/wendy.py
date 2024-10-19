@@ -11,9 +11,9 @@ class Wendy:
     def blit_me(self):
         self.screen.blit(self.image, self.rect)
 
-    def move_left(self,key):
-        self.rect.x += 5  # 向右移动5
+    def move_right(self,key):
+        self.rect.x += 2  # 向右移动5
         
     
-    def move_right(self):
+    def move_left(self):
         self.rect.x += 2

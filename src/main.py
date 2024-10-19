@@ -31,7 +31,7 @@ class YuanShen:
             # 遍历所有事件
             self.keys = pygame.key.get_pressed()
             if self.keys[pygame.K_d]:
-                self.wendy.move_right() 
+                self.wendy.move_left() 
             for event in pygame.event.get():
                 # 如果单击关闭窗口，则退出
                 if event.type == pygame.QUIT:
