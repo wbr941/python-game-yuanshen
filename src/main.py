@@ -29,10 +29,15 @@ class YuanShen:
         # 游戏主循环
         while True:
             # 遍历所有事件
+            self.keys = pygame.key.get_pressed()
+            if self.keys[pygame.K_d]:
+                self.wendy.move_right() 
             for event in pygame.event.get():
                 # 如果单击关闭窗口，则退出
                 if event.type == pygame.QUIT:
                     sys.exit()
+                 
+            
             
             # 将图像调整为屏幕大小
             scaled_start_img = pygame.transform.scale(self.start_img, (self.setting.screen_width, self.setting.screen_height))

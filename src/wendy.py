@@ -6,6 +6,14 @@ class Wendy:
         self.image = pygame.image.load("pic/wendy_img.png")
         self.rect = self.image.get_rect()
         self.rect.center = (400, 300)
+        
     
     def blit_me(self):
         self.screen.blit(self.image, self.rect)
+
+    def move_left(self,key):
+        self.rect.x += 5  # 向右移动5
+        
+    
+    def move_right(self):
+        self.rect.x += 2
