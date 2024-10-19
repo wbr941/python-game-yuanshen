@@ -15,10 +15,10 @@ class Wendy:
         self.screen.blit(self.image, self.rect)
  
     # 向右移动Wendy
-    def move_right(self,key):
-        self.rect.x += 2  # 向右移动5
+    def move_left(self):
+        self.rect.x -= 2  # 向右移动2
          
      
     # 向左移动Wendy
-    def move_left(self):
-        self.rect.x += 2
+    def move_right(self): 
+        self.rect.x += 2 # 向左移动2
