@@ -18,12 +18,12 @@ class YuanShen:
         # 创建Wendy对象
         self.wendy = Wendy(self)
         # 加载开始图像
-        self.start_img = pygame.image.load("pic\start.png")
+        self.start_img = pygame.image.load("pic/start.png")
         # 获取图像矩形（未调整大小）
         self.start_img_rect = self.start_img.get_rect()
         
-        
-        
+        # 初始化透明度变量
+        self.alpha = 0  # 透明度初始值
 
     def run_game(self):
         # 游戏主循环
@@ -38,17 +38,25 @@ class YuanShen:
                 # 如果单击关闭窗口，则退出
                 if event.type == pygame.QUIT:
                     sys.exit()
-                 
-            
-            
+                     
             # 将图像调整为屏幕大小
             scaled_start_img = pygame.transform.scale(self.start_img, (self.setting.screen_width, self.setting.screen_height))
             
             # 填充背景颜色
             self.screen.fill(self.bg_color)
+
+            # 设置图像透明度
+            scaled_start_img.set_alpha(self.alpha)
             # 在屏幕上绘制缩放后的开始图像，从左上角绘制
             self.screen.blit(scaled_start_img, (0, 0))  
             self.wendy.blit_me()
+
+            # 更新透明度，以实现淡入效果
+            if self.alpha < 255:
+                self.alpha += 5  # 每帧增加透明度
+                if self.alpha > 255:
+                    self.alpha = 255  # 确保透明度不超过255
+
             # 更新屏幕显示
             pygame.display.flip()
             # 控制游戏帧率为60帧每秒
@@ -58,4 +66,3 @@ class YuanShen:
 game = YuanShen()
 # 运行游戏
 game.run_game()
-
