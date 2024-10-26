@@ -10,15 +10,16 @@ class YuanShen:
         self.screen = pygame.display.set_mode((self.setting.screen_width, self.setting.screen_height))
         self.bg_color = self.setting.bg_color
         self.clock = pygame.time.Clock()
-        # self.wendy = Wendy(self)  # 确保 Wendy 对象正常创建
+        self.wendy = Wendy(self)  # 确保 Wendy 对象正常创建
         self.start_img = pygame.image.load("pic/start.png")
         self.start_img_rect = self.start_img.get_rect()
-        
+
         # 初始化透明度变量和状态
         self.alpha = 0  # 透明度初始值
         self.fading_in = True  # 初始状态为淡入
         self.wait_time = 0  # 等待时间计数
         self.wait_duration = 72  # 设置等待的帧数（例如 120 帧约为 2秒）
+        self.show_character = False  # 添加角色显示状态标志
 
     def run_game(self):
         while True:
@@ -42,7 +43,10 @@ class YuanShen:
             # 设置图像透明度
             scaled_start_img.set_alpha(self.alpha)
             self.screen.blit(scaled_start_img, (0, 0))
-            # self.wendy.blit_me()  # 如果需要绘制 Wendy
+            
+            # 只有在标志位为 True 时才绘制角色
+            if self.show_character:
+                self.wendy.blit_me()  # 如果需要绘制 Wendy
 
             # 淡入和淡出逻辑
             if self.fading_in:
@@ -55,8 +59,8 @@ class YuanShen:
             else:
                 if self.alpha > 0:
                     self.alpha -= 5  # 每帧透明度降低
-                
-                
+                else:
+                    self.show_character = True  # 透明度为0时显示角色
 
             pygame.display.flip()
             self.clock.tick(60)
