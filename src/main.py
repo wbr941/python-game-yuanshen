@@ -62,7 +62,8 @@ class YuanShen:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                     
+                    
+            #调用图片淡出效果函数       
             self._pic_fade_out()
             
 
