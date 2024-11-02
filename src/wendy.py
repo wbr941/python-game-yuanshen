@@ -1,4 +1,5 @@
 import pygame
+import time
  
 # Wendy类负责创建和管理Wendy角色的属性和行为
 class Wendy:
@@ -22,3 +23,10 @@ class Wendy:
     # 向左移动Wendy
     def move_right(self): 
         self.rect.x += 2 # 向左移动2
+
+    #跳跃，向上后再回到原来的位置
+    def jump(self):
+        self.rect.y -= 8 # 向上跳跃20 
+        
+  
+    

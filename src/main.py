@@ -58,6 +58,10 @@ class YuanShen:
                 self.wendy.move_right() 
             if self.keys[pygame.K_a]:
                 self.wendy.move_left() 
+            # 控制 Wendy 跳跃
+            if self.keys[pygame.K_SPACE]:
+                self.wendy.jump()  
+            
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
