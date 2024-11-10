@@ -19,7 +19,8 @@ class YuanShen:
         self.fading_in = True  # 初始状态为淡入
         self.wait_time = 0  # 等待时间计数
         self.wait_duration = 72  # 设置等待的帧数（例如 120 帧约为 2秒）
-        self.show_character = False  # 添加角色显示状态标志
+        self.show_character = True# 添加角色显示状态标志
+        self.pic_fade_out = False # 添加图片淡出状态标志
     
     def _pic_fade_out(self):
         # 图片淡出效果
@@ -27,16 +28,12 @@ class YuanShen:
         # 将图像调整为屏幕大小
         scaled_start_img = pygame.transform.scale(self.start_img, (self.setting.screen_width, self.setting.screen_height))
             
-            # 填充背景颜色
-        self.screen.fill(self.bg_color)
+            
+        
 
         scaled_start_img.set_alpha(self.alpha)
         self.screen.blit(scaled_start_img, (0, 0))
             
-            # 只有在标志位为 True 时才绘制角色
-        if self.show_character:
-            self.wendy.blit_me()  # 如果需要绘制 Wendy
-
             # 淡入和淡出逻辑
         if self.fading_in:
             if self.alpha < 255:
@@ -50,9 +47,14 @@ class YuanShen:
                 self.alpha -= 5  # 每帧透明度降低
             else:
                 self.show_character = True  # 透明度为0时显示角色
+           
+        
     def run_game(self):
         while True:
             self.keys = pygame.key.get_pressed()
+            self.screen.fill(self.bg_color)
+            if self.show_character:
+                self.wendy.blit_me()  # 如果需要绘制 Wendy
             # 控制 Wendy 移动
             if self.keys[pygame.K_d]:
                 self.wendy.move_right() 
@@ -67,8 +69,9 @@ class YuanShen:
                 if event.type == pygame.QUIT:
                     sys.exit()
                     
-            #调用图片淡出效果函数       
-            self._pic_fade_out()
+            #调用图片淡出效果函数
+            if self.pic_fade_out:       
+                self._pic_fade_out()
             
 
             pygame.display.flip()
@@ -78,3 +81,4 @@ class YuanShen:
 game = YuanShen()
 # 运行游戏
 game.run_game()
+
