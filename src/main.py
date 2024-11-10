@@ -19,8 +19,8 @@ class YuanShen:
         self.fading_in = True  # 初始状态为淡入
         self.wait_time = 0  # 等待时间计数
         self.wait_duration = 72  # 设置等待的帧数（例如 120 帧约为 2秒）
-        self.show_character = True# 添加角色显示状态标志
-        self.pic_fade_out = False # 添加图片淡出状态标志
+        self.show_character = False # 添加角色显示状态标志
+        self.pic_fade_out = True # 添加图片淡出状态标志
     
     def _pic_fade_out(self):
         # 图片淡出效果
